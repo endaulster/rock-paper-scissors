@@ -1,33 +1,30 @@
 * {
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
+    background-color: black;
+    color: #fff;
 }
 
 body {
-    background-color:black;
-}
-
-.container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.gamebox {
+.header {
+    background-color: grey;
+    height: 60px;
+}
+
+.main {
     display: flex;
     flex-direction: column;
-    background-image:radial-gradient(circle farthest-corner at 50% 50%,#626364 8%,#a0afbb);
-    color: #fff;
-    padding: 33px;
+    align-items: center;
+    gap: 10px;
+}
+
+button {
     border-radius: 33px;
-}
-
-.title {
     font-size: 33px;
-}
-
-.tobeyvideo {
-    width: 200px;
-    height: auto;
 }
