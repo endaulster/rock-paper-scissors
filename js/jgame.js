@@ -28,6 +28,7 @@ function playRound(playerSelection, computerSelection)
     {
         consoleUpdater("-Bully Maguire: 'Something's different, I'll figure it out, stop lecturing me, please!'");
         userScore++;
+        scoreGlow(MSG);
     } else if ( playerSelection === "rock" && computerSelection === "rock" )
     {
         consoleUpdater("-Bully Maguire: 'Take your hand off me. Now'");
@@ -35,6 +36,7 @@ function playRound(playerSelection, computerSelection)
     {
         consoleUpdater("-Bully Maguire: 'Stings, doesn't it'")
         t800score++;
+        scoreGlow(TSG);
     }
 
     //Player chooses Paper
@@ -42,10 +44,12 @@ function playRound(playerSelection, computerSelection)
     {
         consoleUpdater("-Bully Maguire: 'Stings, doesn't it'")
         t800score++;
+        scoreGlow(TSG);
     } else if ( playerSelection === "paper" && computerSelection === "rock" )
     {
         consoleUpdater("-Bully Maguire: 'Something's different, I'll figure it out, stop lecturing me, please!'");
         userScore++;
+        scoreGlow(MSG);
     } else if ( playerSelection === "paper" && computerSelection === "paper" )
     {
         consoleUpdater("-Bully Maguire: 'Take your hand off me. Now'");
@@ -59,10 +63,12 @@ function playRound(playerSelection, computerSelection)
     {
         consoleUpdater("-Bully Maguire: 'Stings, doesn't it'")
         t800score++;
+        scoreGlow(TSG);
     } else if ( playerSelection === "scissors" && computerSelection === "paper" )
     {
         consoleUpdater("-Bully Maguire: 'Something's different, I'll figure it out, stop lecturing me, please!'");
         userScore++;
+        scoreGlow(MSG);
     }
 
     //Score updates
@@ -105,13 +111,20 @@ function addAndRemove(z){
     z.addEventListener("transitionend", removetrans);
 }
 
+// POINTS
+
 function scoreGlow(z){
-    z.classList.add("playing");
+    z.classList.add("point");
     function removetrans(){
-        this.classList.remove("playing");
+        this.classList.remove("point");
     }
     z.addEventListener("transitionend", removetrans);
 }
+
+const MSG = document.querySelector(" .MS");
+const TSG = document.querySelector(" .TS");
+
+// 
 
 const userSelectionR = document.querySelector(" .option.rock");
 userSelectionR.onclick = function(){
