@@ -1,7 +1,7 @@
 //We wake up the beast
 
 const narrator = document.querySelector(" .console")
-consoleUpdater("T-800 is online.");
+consoleUpdater("-Bully Maguire: 'I'm gonna put some dirt in your eye!'");
 
 //we store the score
 let userScore = 0;
@@ -26,55 +26,56 @@ function playRound(playerSelection, computerSelection)
     //Player chooses Rock
     if( playerSelection === "rock" && computerSelection === "scissors" )
     {
+        consoleUpdater("-Bully Maguire: 'Something's different, I'll figure it out, stop lecturing me, please!'");
         userScore++;
     } else if ( playerSelection === "rock" && computerSelection === "rock" )
     {
-        consoleUpdater("Truce! Rock can't beat Rock");
+        consoleUpdater("-Bully Maguire: 'Take your hand off me. Now'");
     } else if ( playerSelection === "rock" && computerSelection === "paper" )
     {
-        consoleUpdater("You lose! Paper beats Rock")
+        consoleUpdater("-Bully Maguire: 'Stings, doesn't it'")
         t800score++;
     }
 
     //Player chooses Paper
     if( playerSelection === "paper" && computerSelection === "scissors" )
     {
-        consoleUpdater("You lose! Scissors beat Paper");
+        consoleUpdater("-Bully Maguire: 'Stings, doesn't it'")
         t800score++;
     } else if ( playerSelection === "paper" && computerSelection === "rock" )
     {
-        consoleUpdater("You win! Paper beats Rock");
+        consoleUpdater("-Bully Maguire: 'Something's different, I'll figure it out, stop lecturing me, please!'");
         userScore++;
     } else if ( playerSelection === "paper" && computerSelection === "paper" )
     {
-        consoleUpdater("Truce! Paper can't beat Paper");
+        consoleUpdater("-Bully Maguire: 'Take your hand off me. Now'");
     }
 
     //Player chooses Scissors
     if( playerSelection === "scissors" && computerSelection === "scissors" )
     {
-        consoleUpdater("Truce! Scissors can't beat Scissors");
+        consoleUpdater("-Bully Maguire: 'Take your hand off me. Now'");
     } else if ( playerSelection === "scissors" && computerSelection === "rock" )
     {
-        consoleUpdater("You lose! Rock beats Scissors");
+        consoleUpdater("-Bully Maguire: 'Stings, doesn't it'")
         t800score++;
     } else if ( playerSelection === "scissors" && computerSelection === "paper" )
     {
-        consoleUpdater("You win! Scissors beat Paper");
+        consoleUpdater("-Bully Maguire: 'Something's different, I'll figure it out, stop lecturing me, please!'");
         userScore++;
     }
 
     //Score updates
     if( userScore === 5 )
     {
-        console.clear();
+        consoleUpdater("-Bully Maguire: 'I'm gonna put some dirt in your eye!'");
         alert("TOBEY LOST!")
         userScore = 0;
         t800score = 0;
     } 
     if ( t800score === 5 )
     {
-        console.clear();
+        consoleUpdater("-Bully Maguire: 'I'm gonna put some dirt in your eye!'");
         alert("TOBEY WON!")
         userScore = 0;
         t800score = 0;
@@ -96,11 +97,28 @@ function scoreUpdater()
     uScore.textContent = userScore;
 }
 
+function addAndRemove(z){
+    z.classList.add("playing");
+    function removetrans(){
+        this.classList.remove("playing");
+    }
+    z.addEventListener("transitionend", removetrans);
+}
+
+function scoreGlow(z){
+    z.classList.add("playing");
+    function removetrans(){
+        this.classList.remove("playing");
+    }
+    z.addEventListener("transitionend", removetrans);
+}
+
 const userSelectionR = document.querySelector(" .option.rock");
 userSelectionR.onclick = function(){
     const tobeysmove = computerPlay();
     playRound("rock", tobeysmove);
     scoreUpdater();
+    addAndRemove(userSelectionR);
 };
 
 const userSelectionP = document.querySelector(" .option.paper");
@@ -108,6 +126,7 @@ userSelectionP.onclick = function(){
     const tobeysmove = computerPlay();
     playRound("paper", tobeysmove);
     scoreUpdater();
+    addAndRemove(userSelectionP);
 };
 
 const userSelectionS = document.querySelector(" .option.scissors");
@@ -115,6 +134,7 @@ userSelectionS.onclick = function(){
     const tobeysmove = computerPlay();
     playRound("scissors", tobeysmove);
     scoreUpdater();
+    addAndRemove(userSelectionS);
 };
 
 
