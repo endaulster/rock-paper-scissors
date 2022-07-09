@@ -92,4 +92,12 @@ body {
     background-color: rgb(0, 31, 0);
     font-style: italic;
     font-weight: bold;
+    color: #fff;
+    transition: all 0.50s;
+}
+
+.cglow {
+    
+    color: rgb(255, 243, 116);
+    transform: scale(1.01);
 }

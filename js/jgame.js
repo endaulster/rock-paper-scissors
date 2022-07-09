@@ -1,7 +1,6 @@
 //We wake up the beast
 
 const narrator = document.querySelector(" .console")
-consoleUpdater("-Bully Maguire: 'I'm gonna put some dirt in your eye!'");
 
 //we store the score
 let userScore = 0;
@@ -95,6 +94,15 @@ const uScore = document.querySelector(" .userScore")
 function consoleUpdater(string)
 {
     narrator.textContent = string;
+    consoleGlow(narrator);
+}
+
+function consoleGlow(z){
+    z.classList.add("cglow");
+    function removetrans(){
+        this.classList.remove("cglow");
+    }
+    z.addEventListener("transitionend", removetrans);
 }
 
 function scoreUpdater()
@@ -149,8 +157,6 @@ userSelectionS.onclick = function(){
     scoreUpdater();
     addAndRemove(userSelectionS);
 };
-
-
 
 
 
