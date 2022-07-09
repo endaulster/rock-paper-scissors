@@ -1,6 +1,11 @@
 //We wake up the beast
 
-console.log("T-800 is online.");
+const narrator = document.querySelector(" .console")
+consoleUpdater("T-800 is online.");
+
+//we store the score
+let userScore = 0;
+let t800score = 0;
 
 //We make the computer select randomly whaterver it wants
 
@@ -15,114 +20,106 @@ function computerPlay()
 
 const computerSelection = computerPlay();
 
-//Tester function, just to see if everything is working
-
-function tester(playerSelection, computerSelection){
-    console.log("Player move: " + playerSelection);
-    console.log("Computer move: " + computerSelection);
-}
-
 function playRound(playerSelection, computerSelection) 
 {
-    //We turn the string to lowercaps
-
-    playerSelection = playerSelection.toLowerCase();
-
-    //We deploy a tester to see if its doing what its supossed to
    
-    tester(playerSelection, computerSelection);
-    
     //Player chooses Rock
     if( playerSelection === "rock" && computerSelection === "scissors" )
     {
-        console.log("You win! Rock beats Scissors");
         userScore++;
     } else if ( playerSelection === "rock" && computerSelection === "rock" )
     {
-        console.log("Truce! Rock can't beat Rock");
+        consoleUpdater("Truce! Rock can't beat Rock");
     } else if ( playerSelection === "rock" && computerSelection === "paper" )
     {
-        console.log("You lose! Paper beats Rock")
+        consoleUpdater("You lose! Paper beats Rock")
         t800score++;
     }
 
     //Player chooses Paper
     if( playerSelection === "paper" && computerSelection === "scissors" )
     {
-        console.log("You lose! Scissors beat Paper");
+        consoleUpdater("You lose! Scissors beat Paper");
         t800score++;
     } else if ( playerSelection === "paper" && computerSelection === "rock" )
     {
-        console.log("You win! Paper beats Rock");
+        consoleUpdater("You win! Paper beats Rock");
         userScore++;
     } else if ( playerSelection === "paper" && computerSelection === "paper" )
     {
-        console.log("Truce! Paper can't beat Paper");
+        consoleUpdater("Truce! Paper can't beat Paper");
     }
 
     //Player chooses Scissors
     if( playerSelection === "scissors" && computerSelection === "scissors" )
     {
-        console.log("Truce! Scissors can't beat Scissors");
+        consoleUpdater("Truce! Scissors can't beat Scissors");
     } else if ( playerSelection === "scissors" && computerSelection === "rock" )
     {
-        console.log("You lose! Rock beats Scissors");
+        consoleUpdater("You lose! Rock beats Scissors");
         t800score++;
     } else if ( playerSelection === "scissors" && computerSelection === "paper" )
     {
-        console.log("You win! Scissors beat Paper");
+        consoleUpdater("You win! Scissors beat Paper");
         userScore++;
     }
-    console.log("Player Score: " + userScore);
-    console.log("Computer Score: " + t800score);
+
+    //Score updates
+    if( userScore === 5 )
+    {
+        console.clear();
+        alert("TOBEY LOST!")
+        userScore = 0;
+        t800score = 0;
+    } 
+    if ( t800score === 5 )
+    {
+        console.clear();
+        alert("TOBEY WON!")
+        userScore = 0;
+        t800score = 0;
+    }     
 }
 
-//We make a function that turns 1 round in a 5 round game
+//
+const tScore = document.querySelector(" .tobeyScore")
+const uScore = document.querySelector(" .userScore")
 
-function game(playerSelection, computerSelection)
+function consoleUpdater(string)
 {
-    for (let i = 1; i < 6; i++)
-    {
-        playerSelection = prompt("Choose your weapon for round number " + i);
-        playerSelection = playerSelection.toLowerCase();
-        let valid = false;
-
-        if ( playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors" )
-        {
-            valid = true;
-        }
-
-        while( valid == false )
-        {
-            playerSelection = prompt("Choose a VALID weapon for round number " + i);
-            playerSelection = playerSelection.toLowerCase();
-            if ( playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors" )
-            {
-                valid = true;
-            }
-        }
-       
-        let computerSelection = computerPlay();
-        playRound(playerSelection, computerSelection);
-    }
-    
-    if ( userScore > t800score )
-    {
-        console.log("Skynet is down");
-    } else if ( t800score )
-    {
-        console.log("Skynet wins");
-    } else
-    {
-        console.log("We are even");
-    }
+    narrator.textContent = string;
 }
 
-//we store the score
-let userScore = 0;
-let t800score = 0;
+function scoreUpdater()
+{
+    tScore.textContent = t800score;
+    uScore.textContent = userScore;
+}
 
-game();
+const userSelectionR = document.querySelector(" .option.rock");
+userSelectionR.onclick = function(){
+    const tobeysmove = computerPlay();
+    playRound("rock", tobeysmove);
+    scoreUpdater();
+};
+
+const userSelectionP = document.querySelector(" .option.paper");
+userSelectionP.onclick = function(){
+    const tobeysmove = computerPlay();
+    playRound("paper", tobeysmove);
+    scoreUpdater();
+};
+
+const userSelectionS = document.querySelector(" .option.scissors");
+userSelectionS.onclick = function(){
+    const tobeysmove = computerPlay();
+    playRound("scissors", tobeysmove);
+    scoreUpdater();
+};
+
+
+
+
 
 
 

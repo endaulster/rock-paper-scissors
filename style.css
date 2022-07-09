@@ -24,7 +24,17 @@ body {
     gap: 10px;
 }
 
-button {
-    border-radius: 33px;
-    font-size: 33px;
+.options {
+    display: flex;
+    gap: 33px;
+}
+
+.option {
+    border-radius: 7px;
+    font-size: 20px;
+    display: flex;
+    background-color: grey;
+    padding: 16px;
+    background: rgb(0,0,0);
+    background: linear-gradient(354deg, rgba(0,0,0,1) 0%, rgba(78,78,78,1) 0%, rgba(172,172,172,1) 49%, rgba(85,85,85,1) 100%);
 }
