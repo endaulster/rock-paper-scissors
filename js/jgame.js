@@ -2,6 +2,8 @@
 
 const narrator = document.querySelector(" .console")
 
+// 
+
 //we store the score
 let userScore = 0;
 let t800score = 0;
@@ -21,7 +23,7 @@ const computerSelection = computerPlay();
 
 function playRound(playerSelection, computerSelection) 
 {
-   
+    bullysdelight();
     //Player chooses Rock
     if( playerSelection === "rock" && computerSelection === "scissors" )
     {
@@ -119,6 +121,11 @@ function addAndRemove(z){
     z.addEventListener("transitionend", removetrans);
 }
 
+function bullysdelight(){
+    let audio = document.getElementById("tobey1");
+    audio.play();
+}
+
 // POINTS
 
 function scoreGlow(z){
@@ -157,7 +164,6 @@ userSelectionS.onclick = function(){
     scoreUpdater();
     addAndRemove(userSelectionS);
 };
-
 
 
 
