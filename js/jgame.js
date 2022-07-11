@@ -76,14 +76,14 @@ function playRound(playerSelection, computerSelection)
     if( userScore === 5 )
     {
         consoleUpdater("-Bully Maguire: 'I'm gonna put some dirt in your eye!'");
-        alert("TOBEY LOST!")
+        alert("BULLY MAGUIRE LOST!")
         userScore = 0;
         t800score = 0;
     } 
     if ( t800score === 5 )
     {
         consoleUpdater("-Bully Maguire: 'I'm gonna put some dirt in your eye!'");
-        alert("TOBEY WON!")
+        alert("BULLY MAGUIRE WON!")
         userScore = 0;
         t800score = 0;
     }     
